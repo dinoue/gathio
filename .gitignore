@@ -98,3 +98,4 @@ typings/
 
 # DynamoDB Local files
 .dynamodb
+node_modulesbak/.pnpm-workspace-state.json

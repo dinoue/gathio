@@ -87,13 +87,13 @@ router.post(
 
         if (req.file?.buffer) {
             eventImageFilename = await Jimp.read(req.file.buffer)
-                .then((img) => {
+                .then((img: Jimp) => {
                     img.resize(920, Jimp.AUTO) // resize
                         .quality(80) // set JPEG quality
-                        .write("./public/events/" + eventID + ".jpg"); // save
+                        .write(`./public/events/${eventID}.jpg`); // save
                     return eventID + ".jpg";
                 })
-                .catch((err) => {
+                .catch((err: Error) => {
                     addToLog(
                         "Jimp",
                         "error",
@@ -336,12 +336,12 @@ router.put(
             let eventImageFilename = event.image;
             if (req.file?.buffer) {
                 Jimp.read(req.file.buffer)
-                    .then((img) => {
+                    .then((img: Jimp) => {
                         img.resize(920, Jimp.AUTO) // resize
                             .quality(80) // set JPEG quality
                             .write(`./public/events/${eventID}.jpg`); // save
                     })
-                    .catch((err) => {
+                    .catch((err: Error) => {
                         addToLog(
                             "Jimp",
                             "error",
